@@ -26,7 +26,7 @@ type NumberProperties struct {
 func main() {
 
 	router := gin.Default()
-	router.GET("/", getNumberProperties)
+	router.GET("api/classify-number?number=371", getNumberProperties)
 
 	port := os.Getenv("PORT")
 	if port == "" {
