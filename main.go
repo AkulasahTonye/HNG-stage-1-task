@@ -42,13 +42,14 @@ func getNumberProperties(trivia *gin.Context) {
 }
 
 func analyzeNumber(num int) NumberProperties {
+	numb := 371
 	return NumberProperties{
-		Number:     371,
+		Number:     numb,
 		IsPrime:    isPrime(num),
 		IsPerfect:  isPerfect(num),
 		Properties: getProperties(num),
 		DigitSum:   sumOfDigits(num),
-		FunFact:    getFunFact(371),
+		FunFact:    getFunFact(numb),
 	}
 }
 
