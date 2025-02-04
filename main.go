@@ -26,7 +26,7 @@ type NumberProperties struct {
 func main() {
 
 	router := gin.Default()
-	router.GET("api/classify-number?number=371", getNumberProperties)
+	router.GET("/api/classify-number", getNumberProperties)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -39,20 +39,20 @@ func main() {
 // Getting API handler
 func getNumberProperties(trivia *gin.Context) {
 
-	data := trivia.Param("http://numbersapi.com/#371/math")
+	data := trivia.Query("number")
 	num, err := strconv.Atoi(data)
-	if err == nil {
+	if err != nil {
 		trivia.JSON(http.StatusBadRequest, gin.H{"number": "alphabet", "error": true})
 		return
 	}
 
 	analyzeNumber := NumberProperties{
-		Number:     317,
+		Number:     num,
 		IsPrime:    isPrime(num),
 		IsPerfect:  isPerfect(num),
 		Properties: getProperties(num),
 		DigitSum:   sumOfDigits(num),
-		FunFact:    getFunFact(317),
+		FunFact:    getFunFact(num),
 	}
 
 	trivia.JSON(http.StatusOK, analyzeNumber)
@@ -70,7 +70,7 @@ func isPrime(n int) bool {
 		return false
 	}
 	for i := 2; i*i <= n; i++ {
-		if n%1 == 0 {
+		if n%i == 0 {
 			return false
 		}
 	}
