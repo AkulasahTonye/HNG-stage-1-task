@@ -26,8 +26,6 @@ func main() {
 	router := gin.Default()
 	router.GET("/", getNumberProperties)
 
-	router.Run("localhost:4000")
-
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "4000" // Localhost 4000
