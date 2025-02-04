@@ -6,6 +6,6 @@
 
 # go run file name . go
 
-# API Endpoint:
+# API Endpoint: https://hng-stage-1-task-fg0f.onrender.com
 
 # Written in [Golang](https://hng.tech/hire/golang-developers)
