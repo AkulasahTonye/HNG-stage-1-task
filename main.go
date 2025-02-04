@@ -12,10 +12,6 @@ import (
 
 // Struct for JSON input
 
-type RequestData struct {
-	Number int `json:"number"`
-}
-
 // structure for Json response
 
 type NumberProperties struct {
@@ -31,7 +27,6 @@ func main() {
 
 	router := gin.Default()
 	router.GET("/", getNumberProperties)
-	router.POST("/", getNumberPropertiesJSON)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -44,40 +39,30 @@ func main() {
 // Getting API handler
 func getNumberProperties(trivia *gin.Context) {
 
-	data := trivia.Param("num")
+	data := trivia.Param("http://numbersapi.com/#371/math")
 	num, err := strconv.Atoi(data)
 	if err == nil {
 		trivia.JSON(http.StatusBadRequest, gin.H{"number": "alphabet", "error": true})
 		return
 	}
 
-	trivia.JSON(http.StatusOK, analyzeNumber(num))
-}
-
-func getNumberPropertiesJSON(c *gin.Context) {
-	var requestData RequestData
-
-	// Bind JSON input to struct
-	if err := c.ShouldBindJSON(&requestData); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"number": "alphabet", "error": true})
-		return
-	}
-
-	c.JSON(http.StatusOK, analyzeNumber(requestData.Number))
-}
-
-func analyzeNumber(num int) NumberProperties {
-
-	return NumberProperties{
-		Number:     num,
+	analyzeNumber := NumberProperties{
+		Number:     317,
 		IsPrime:    isPrime(num),
 		IsPerfect:  isPerfect(num),
 		Properties: getProperties(num),
 		DigitSum:   sumOfDigits(num),
-		FunFact:    getFunFact(num),
+		FunFact:    getFunFact(317),
 	}
 
+	trivia.JSON(http.StatusOK, analyzeNumber)
 }
+
+//func analyzeNumber(num int) NumberProperties {
+//
+//
+//
+//}
 
 // checking if number is prime
 func isPrime(n int) bool {
