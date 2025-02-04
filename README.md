@@ -6,6 +6,6 @@
 
 # go run file name . go
 
-# API Endpoint: https://hng-stage-1-task-fg0f.onrender.com
+# API Endpoint: https://hng-stage-1-task-fg0f.onrender.com/api/classify-number?number=371
 
 # Written in [Golang](https://hng.tech/hire/golang-developers)
