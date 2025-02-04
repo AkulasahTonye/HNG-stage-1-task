@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -27,6 +28,12 @@ func main() {
 
 	router.Run("localhost:4000")
 
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "4000" // Localhost 4000
+	}
+
+	router.Run("0.0.0.0:" + port)
 }
 
 // Getting API handler
