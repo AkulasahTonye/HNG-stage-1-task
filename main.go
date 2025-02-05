@@ -45,7 +45,6 @@ func getNumberProperties(trivia *gin.Context) {
 		trivia.JSON(http.StatusBadRequest, gin.H{"number": "alphabet", "error": true})
 		return
 	}
-
 	analyzeNumber := NumberProperties{
 		Number:     num,
 		IsPrime:    isPrime(num),
