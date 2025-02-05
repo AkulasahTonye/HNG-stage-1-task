@@ -114,10 +114,10 @@ func getProperties(n int) []string {
 		props = append(props, "Odd")
 	}
 	if n%10 == 0 {
-		props = append(props, "armstrong")
+		props = append(props, "Multiple of 10")
 	}
 	if n%3 == 0 {
-		props = append(props, "armstrong")
+		props = append(props, "Divisible by 3")
 	}
 	return props
 }
