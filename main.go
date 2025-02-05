@@ -108,13 +108,16 @@ func sumOfDigits(n int) int {
 
 func getProperties(n int) []string {
 	var props []string
-	if n%3 == 0 {
-		props = append(props, "armstrong")
+	if n%2 == 0 {
+		props = append(props, "Even")
 	} else {
 		props = append(props, "Odd")
 	}
 	if n%10 == 0 {
-		props = append(props, "Odd")
+		props = append(props, "armstrong")
+	}
+	if n%3 == 0 {
+		props = append(props, "armstrong")
 	}
 	return props
 }
